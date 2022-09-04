@@ -338,16 +338,24 @@ section {
     height: 100vh;
     scroll-margin-top: 4.5rem;
     margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .cards-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    margin-top: 3rem;
 
+    h1 {
+        grid-column: 1/ -1;
+        text-align: center;
+    }
    
-
     .card {
         height: 275px;
         width: 250px;
@@ -355,6 +363,7 @@ section {
         overflow: hidden;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
         position: relative;
+        
 
         img {
             width: 100%;
