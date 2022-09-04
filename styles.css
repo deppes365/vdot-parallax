@@ -162,6 +162,10 @@ body {
   color: #515151;
 }
 
+.nav-bar.solid .mobile-menu-btn .top-line, .nav-bar.solid .mobile-menu-btn .middle-line, .nav-bar.solid .mobile-menu-btn .bottom-line {
+  background-color: #515151;
+}
+
 .mobile-menu-btn {
   display: none;
   position: relative;

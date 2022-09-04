@@ -161,6 +161,12 @@ body {
     color: #515151;
 }
 
+.nav-bar.solid .mobile-menu-btn {
+    .top-line, .middle-line, .bottom-line {
+        background-color: #515151;
+    }
+}
+
 .mobile-menu-btn {
 	display: none;
     position: relative;
@@ -199,9 +205,7 @@ body {
         transform: translate(-50%, -75%);
     }
 
-    &.active {
-
-    }
+    
 
 }
 
