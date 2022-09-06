@@ -32,6 +32,16 @@ const observer = new IntersectionObserver(entries => {
     })
 }, {threshold: 0.5})
 
-observer.observe(document.querySelector('.aside-page .container'))
+observer.observe(document.querySelector('.aside-page .container'));
+
+
+// Page observer to activate current link
+const pageObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+      if(entry.isIntersecting) {
+          entry.target.classList.add('active')
+      }
+  })
+}, {threshold: 0.5})
 
 
