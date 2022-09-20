@@ -7,6 +7,7 @@ const menuBtn = document.querySelector('.mobile-menu-btn');
 const menu = document.querySelector('.nav-links');
 const navLinks = document.querySelectorAll('.nav-link');
 const pages = document.querySelectorAll('.page');
+const fadeIn = document.querySelectorAll('.fade-in')
 
 //distance of top of site title to top of window
 const distance = siteTitle.getClientRects()[0].y;
@@ -36,6 +37,10 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(document.querySelector('.aside-page .container'));
+
+fadeIn.forEach(element => {
+	observer.observe(element)
+})
 
 // Page observer to activate current link
 const pageObserver = new IntersectionObserver(
@@ -98,3 +103,5 @@ menu.addEventListener('click', e => {
 		closeMenu();
 	}
 });
+
+

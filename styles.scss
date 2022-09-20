@@ -328,6 +328,22 @@ body {
 	}
 }
 
+.fade-in {
+	transition: 0.75s ease all;
+	transition-delay: 0.5s;
+	transform: translateY(20px);
+	opacity: 0;
+
+	&.delay {
+		transition-delay: 0.75s;
+	}
+
+	&.show {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
 header {
 	position: relative;
 	top: 1.5rem;

@@ -342,6 +342,27 @@ body {
           transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.fade-in {
+  -webkit-transition: 0.75s ease all;
+  transition: 0.75s ease all;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+  -webkit-transform: translateY(20px);
+          transform: translateY(20px);
+  opacity: 0;
+}
+
+.fade-in.delay {
+  -webkit-transition-delay: 0.75s;
+          transition-delay: 0.75s;
+}
+
+.fade-in.show {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  opacity: 1;
+}
+
 header {
   position: relative;
   top: 1.5rem;
