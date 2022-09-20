@@ -7,7 +7,12 @@ const menuBtn = document.querySelector('.mobile-menu-btn');
 const menu = document.querySelector('.nav-links');
 const navLinks = document.querySelectorAll('.nav-link');
 const pages = document.querySelectorAll('.page');
-const fadeIn = document.querySelectorAll('.fade-in')
+const fadeIn = document.querySelectorAll('.fade-in');
+const carouselCards = document.querySelectorAll('.carousel .card');
+const carouselContainer = document.querySelector('.carousel-container');
+const carousel = document.querySelector('.carousel');
+const prevBtn = document.querySelector('.prev-btn')
+const nextBtn = document.querySelector('.next-btn')
 
 //distance of top of site title to top of window
 const distance = siteTitle.getClientRects()[0].y;
@@ -39,8 +44,8 @@ const observer = new IntersectionObserver(
 observer.observe(document.querySelector('.aside-page .container'));
 
 fadeIn.forEach(element => {
-	observer.observe(element)
-})
+	observer.observe(element);
+});
 
 // Page observer to activate current link
 const pageObserver = new IntersectionObserver(
@@ -103,5 +108,52 @@ menu.addEventListener('click', e => {
 		closeMenu();
 	}
 });
+
+
+// Carousel JS
+let cardNum = 0;
+let centerOfCarouselContainer = carouselContainer.clientWidth / 2;
+let cardWidth = carousel.clientWidth / carouselCards.length;
+
+
+carousel.style.transform = `translateX(${
+	centerOfCarouselContainer - cardWidth / 2 - cardWidth * cardNum
+}px)`;
+
+const nextFunc = () => {
+
+	if (cardNum >= carouselCards.length - 1) {
+		cardNum = 0;
+	} else {
+		cardNum = cardNum + 1;
+	}
+	carousel.style.transform = `translateX(${
+		centerOfCarouselContainer - cardWidth / 2 - cardWidth * cardNum
+	}px)`;
+};
+
+const prevFunc = () => {
+
+	if (cardNum <= 0) {
+		cardNum = (carouselCards.length - 1);
+	} else {
+		cardNum = cardNum - 1;
+	}
+	carousel.style.transform = `translateX(${
+		centerOfCarouselContainer - cardWidth / 2 - cardWidth * cardNum
+	}px)`;
+};
+
+nextBtn.addEventListener('click', () => nextFunc())
+prevBtn.addEventListener('click', () => prevFunc())
+
+
+window.addEventListener('resize', () => {
+	centerOfCarouselContainer = carouselContainer.clientWidth / 2;
+	cardWidth = carousel.clientWidth / carouselCards.length;
+	window.location.reload()
+});
+
+
 
 
