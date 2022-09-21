@@ -42,6 +42,10 @@ $breakpoints: (
 	}
 }
 
+// Colors
+$orange: #E7993E;
+$dark-gray: #515151;
+
 * {
 	margin: 0;
 	padding: 0;
@@ -56,7 +60,6 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	position: relative;
 }
-
 
 
 .top-bar {
@@ -540,6 +543,41 @@ section {
 	}
 }
 
+.carousel-div {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	background-color: #515151;
+	position: relative;
+	padding: 2rem 0;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+	border-top: 15px solid $orange;
+	border-bottom: 15px solid $orange;
+
+	// &::before {
+	// 	content: '';
+	// 	width: 100%;
+	// 	height: 15px;
+	// 	background-color: #E7993E;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 50%;
+	// 	transform: translateX(-50%);
+	// }
+
+	// &::after {
+	// 	content: '';
+	// 	width: 100%;
+	// 	height: 15px;
+	// 	background-color: #E7993E;
+	// 	position: absolute;
+	// 	bottom: 0;
+	// 	left: 50%;
+	// 	transform: translateX(-50%);
+	// }
+}
+
 .carousel-container {
 	width: 100%;
 	height: 400px;
@@ -561,16 +599,26 @@ section {
 		overflow: hidden;
 		position: absolute;
 		transition: 0.5s ease all;
+		
+
 		.card {
 			height: 100%;
 			width: 300px;
-			border: 1px solid blue;
 			border-radius: 30px;
 			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: 0.3s ease all;
+			overflow: hidden;
+
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
 		}
 	}
-
-	
 
 	.carousel-content {
 		width: 25%;
@@ -588,7 +636,7 @@ section {
 			width: 50%;
 			height: 100%;
 			content: '';
-			background: rgb(255,255, 255);
+			background: rgb(81,81,81);
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -599,7 +647,7 @@ section {
 			width: 50%;
 			height: 100%;
 			content: '';
-			background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+			background: linear-gradient(to right, rgba(81, 81, 81, 1), rgba(81, 81, 81, 0));
 			position: absolute;
 			left: 50%;
 			// transform: translateX(-50%);
@@ -616,6 +664,9 @@ section {
 			bottom: 2rem;
 			left: 50%;
 			transform: translateX(-50%);
+			justify-content: center;
+			align-items: center;
+			color: #fff;
 
 			.btn {
 				display: inline-flex;
@@ -623,13 +674,18 @@ section {
 				align-items: center;
 				height: 2.25rem;
 				width: 2.25rem;
-				background-color: #515151;
+				background-color: $orange;
 				padding: 0.5rem;
 				border-radius: 50%;
 				box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 				border: 0;
 				outline: 0;
 				cursor: pointer;
+				transition: 0.3s ease;
+
+				&:hover {
+					transform: scale(0.92);
+				}
 			}
 
 			i {

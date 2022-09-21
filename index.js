@@ -8,11 +8,11 @@ const menu = document.querySelector('.nav-links');
 const navLinks = document.querySelectorAll('.nav-link');
 const pages = document.querySelectorAll('.page');
 const fadeIn = document.querySelectorAll('.fade-in');
-const carouselCards = document.querySelectorAll('.carousel .card');
+let carouselCards = document.querySelectorAll('.carousel .card');
 const carouselContainer = document.querySelector('.carousel-container');
 const carousel = document.querySelector('.carousel');
-const prevBtn = document.querySelector('.prev-btn')
-const nextBtn = document.querySelector('.next-btn')
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 
 //distance of top of site title to top of window
 const distance = siteTitle.getClientRects()[0].y;
@@ -109,19 +109,16 @@ menu.addEventListener('click', e => {
 	}
 });
 
-
 // Carousel JS
 let cardNum = 0;
 let centerOfCarouselContainer = carouselContainer.clientWidth / 2;
 let cardWidth = carousel.clientWidth / carouselCards.length;
-
 
 carousel.style.transform = `translateX(${
 	centerOfCarouselContainer - cardWidth / 2 - cardWidth * cardNum
 }px)`;
 
 const nextFunc = () => {
-
 	if (cardNum >= carouselCards.length - 1) {
 		cardNum = 0;
 	} else {
@@ -130,30 +127,89 @@ const nextFunc = () => {
 	carousel.style.transform = `translateX(${
 		centerOfCarouselContainer - cardWidth / 2 - cardWidth * cardNum
 	}px)`;
+
+	document.querySelector('.counter').innerText = `${cardNum + 1}/${
+		carouselCards.length
+	}`;
+	cardScale();
 };
 
 const prevFunc = () => {
-
 	if (cardNum <= 0) {
-		cardNum = (carouselCards.length - 1);
+		cardNum = carouselCards.length - 1;
 	} else {
 		cardNum = cardNum - 1;
 	}
 	carousel.style.transform = `translateX(${
 		centerOfCarouselContainer - cardWidth / 2 - cardWidth * cardNum
 	}px)`;
+	document.querySelector('.counter').innerText = `${cardNum + 1}/${
+		carouselCards.length
+	}`;
+
+	cardScale('prev');
 };
 
-nextBtn.addEventListener('click', () => nextFunc())
-prevBtn.addEventListener('click', () => prevFunc())
+// function popOff() {
+// 	if(carouselCards[cardNum - 1] === undefined) {
+// 		console.log('doesn\'t exist');
+// 	} else {
+// 		let newCarousel = carouselCards
+// 		const cardToMove = newCarousel[cardNum - 1]
+// 		const cardText = document.createTextNode(cardToMove.innerText)
+// 		carouselCards[cardNum - 1].remove()
+// 		const div = document.createElement('div')
+// 		div.classList.add('card')
+// 		div.appendChild(cardText)
+// 		carousel.appendChild(div)
 
+// 		// newCarousel.push(cardToMove)
+
+// 	}
+// }
+
+nextBtn.addEventListener('click', () => nextFunc());
+prevBtn.addEventListener('click', () => prevFunc());
+document.querySelector('.counter').innerText = `${cardNum + 1}/${
+	carouselCards.length
+}`;
+
+// carouselCards[1].style.transform = 'scale(0.9)';
+// carouselCards[1].style.opacity = '0.5';
+
+// carouselCards[2].style.transform = 'scale(0.8)';
+// carouselCards[2].style.opacity = '0.25';
+cardScale();
+
+function cardScale(direction = 'next') {
+	if (carouselCards[cardNum] !== undefined) {
+		carouselCards[cardNum].style.transform = 'scale(1)';
+		carouselCards[cardNum].style.opacity = '1';
+	}
+
+	if (carouselCards[cardNum + 1] !== undefined) {
+		carouselCards[cardNum + 1].style.transform = 'scale(0.9)';
+		carouselCards[cardNum + 1].style.opacity = '0.5';
+	}
+
+	if (carouselCards[cardNum + 2] !== undefined) {
+		carouselCards[cardNum + 2].style.transform = 'scale(0.8)';
+		carouselCards[cardNum + 2].style.opacity = '0.15';
+	}
+
+	if (carouselCards[cardNum - 1] !== undefined) {
+		carouselCards[cardNum - 1].style.transform = 'scale(0.9)';
+		carouselCards[cardNum - 1].style.opacity = '0.5';
+	}
+
+	if (carouselCards[cardNum - 2] !== undefined) {
+		carouselCards[cardNum - 2].style.transform = 'scale(0.8)';
+		carouselCards[cardNum - 2].style.opacity = '0.15';
+	}
+}
 
 window.addEventListener('resize', () => {
 	centerOfCarouselContainer = carouselContainer.clientWidth / 2;
 	cardWidth = carousel.clientWidth / carouselCards.length;
-	window.location.reload()
+	window.location.reload();
 });
-
-
-
-
